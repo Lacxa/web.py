@@ -12,7 +12,7 @@ def login():
 
 @auth.route('/logout')
 def logout():
-    return "<p>logout</P"
+    return "<p>wait when logout ...</P>"
 
 
 @auth.route('/sign up', methods=['GET', 'POST'])
@@ -27,12 +27,11 @@ def sign_up():
             flash('Email must be greater than 3 character.', category='error')
         elif len(Firstname) < 2:
             flash('First name must be greater than 1 character.', category='error')
-        elif Password1 != password2:
-            flash('Passwords dont match.', category='error')
         elif len(Password1) < 7:
             flash('password must be at least 7 characters.', category='error')
+        elif Password1 != password2:
+            flash('Passwords dont match.', category='error')
         else:
-            # add user to database
             flash('account created!', category='success')
 
     return render_template("sign up.html")
